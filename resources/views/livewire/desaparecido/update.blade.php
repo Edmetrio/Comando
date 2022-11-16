@@ -42,33 +42,31 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6" style="margin-top: 3%">
-                    <input type="file" class="custom-file-input" wire:model="icon">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar o Ícone</label>
+                <div class="form-group col-md-6">
+                    <label for="formFile" class="form-label">Icon</label>
+                    <input class="form-control" type="file" id="formFile" wire:model="new_icon">
+                    @if ($new_icon)
+                        <img src="{{ $new_icon->temporaryUrl() }}" style="width: 200px; height: 200px;" />
+                    @else
+                        <img src="{{ asset('storage') }}/{{ $old_icon }}" style="width: 200px; height: 200px;" />
+                    @endif
                     @error('icon')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-            </div>
-            <div class="form-row">
-                <label for="exampleFormControlTextarea1">Estado:</label>
-                <div class="form-group col-md-4">
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" wire:model="encontrado"
-                            {{ $estado === 'on' ? 'checked' : '' }} name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Encontrado</label>
-                    </div>
-                    <div class="custom-control custom-radio">
-                        <input type="radio" id="customRadio2" wire:model="desaparecido"
-                            {{ $estado === 'off' ? 'checked' : '' }} name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="customRadio2">Desaparecido</label>
-                    </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1" style="margin-bottom: 2%">Estado:</label><br />
+                    <label class="radio-inline"><input type="radio" wire:model="estado" value="true"
+                            {{ $estado === 'true' ? 'checked' : '' }}> Encontrado</label>
+                    <label class="radio-inline"><input type="radio" wire:model="estado" value="on"
+                            {{ $estado === 'on' ? 'checked' : '' }}> Desaparecido</label>
                 </div>
+
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="exampleFormControlTextarea1">Descrição:</label>
-                    <textarea class="form-control" wire:model="descricao" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    <textarea wire:model="descricao" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
                     @error('descricao')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

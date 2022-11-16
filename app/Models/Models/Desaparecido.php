@@ -15,7 +15,7 @@ class Desaparecido extends Model
     protected $guarded = [];
 
     protected $table = 'desaparecido';
-    protected $fillable = ['fase_id','esquadra_id','users_id','nome','idade','icon','descricao'];
+    protected $fillable = ['fase_id','esquadra_id','users_id','nome','idade','icon','descricao','estado'];
 
     public function fases()
     {

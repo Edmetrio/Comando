@@ -21,10 +21,11 @@
                     <div class="p-2 d-flex flex-row align-items-center">
                         <div class="avatar avatar-xs mr-2">
                             <span class="avatar-title rounded-circle text-center bg-primary">
-                                <i class="material-icons text-white icon-18pt">business</i>
+                                <img src="{{ asset('assets/images/logos/icons.png') }}" alt="Simbolo"
+                                class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             </span>
                         </div>
-                        <a href="{{ Route('desaparecido') }}"
+                        <a href="{{ Route('desaparecidos') }}"
                            class="text-dark">
                             <strong>Desaparecidos</strong>
                         </a>
@@ -36,7 +37,8 @@
                     <div class="p-2 d-flex flex-row align-items-center">
                         <div class="avatar avatar-xs mr-2">
                             <span class="avatar-title rounded-circle text-center">
-                                <i class="material-icons text-white icon-18pt">person_add</i>
+                                <img src="{{ asset('assets/images/logos/9.png') }}" alt="Simbolo"
+                                class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             </span>
                         </div>
                         <a href="{{ Route('permissao') }}"
@@ -51,7 +53,8 @@
                     <div class="p-2 d-flex flex-row align-items-center">
                         <div class="avatar avatar-xs mr-2">
                             <span class="avatar-title rounded-circle text-center bg-success">
-                                <i class="material-icons text-white icon-18pt">receipt</i>
+                                <img src="{{ asset('assets/images/logos/2.png') }}" alt="Simbolo"
+                                class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             </span>
                         </div>
                         <a href="{{ Route('indiciado') }}"
@@ -66,12 +69,13 @@
                     <div class="p-2 d-flex flex-row align-items-center">
                         <div class="avatar avatar-xs mr-2">
                             <span class="avatar-title rounded-circle text-center bg-info">
-                                <i class="material-icons text-white icon-18pt">monetization_on</i>
+                                <img src="{{ asset('assets/images/logos/8.png') }}" alt="Simbolo"
+                                class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             </span>
                         </div>
-                        <a href="#"
+                        <a href="{{ Route('esquadra')}}"
                            class="text-dark">
-                            <strong>Earnings</strong>
+                            <strong>Esquadras</strong>
                         </a>
                     </div>
                 </div>
@@ -81,7 +85,8 @@
                     <div class="p-2 d-flex flex-row align-items-center">
                         <div class="avatar avatar-xs mr-2">
                             <span class="avatar-title rounded-circle text-center bg-blue">
-                                <i class="material-icons text-white icon-18pt">shop</i>
+                                <img src="{{ asset('assets/images/logos/2.png') }}" alt="Simbolo"
+                                class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             </span>
                         </div>
                         <a href="{{ Route('role') }}"

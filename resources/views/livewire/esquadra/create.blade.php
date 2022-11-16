@@ -6,9 +6,9 @@
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="exampleInputPassword1">Província:</label>
+                    <label for="exampleInputPassword1">Distrito:</label>
                     <select class="custom-select" wire:model="distrito_id">
-                        <option selected>Seleccione a província</option>
+                        <option selected>Seleccione a Distrito</option>
                         @foreach($distrito as $p)
                         <option value="{{$p->id}}">{{$p->nome}}</option>
                         @endforeach

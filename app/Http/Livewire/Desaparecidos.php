@@ -13,7 +13,7 @@ use Livewire\WithFileUploads;
 
 class Desaparecidos extends Component
 {
-    public $nome, $fase_id, $users_id, $idade, $esquadra_id, $icon, $descricao, $desaparecido_id, $estado;
+    public $nome, $fase_id, $users_id, $idade, $esquadra_id, $icon, $descricao, $desaparecido_id, $estado, $estados, $new_icon, $old_icon;
     public $updateMode = false;
     public $encontrado, $desaparecido;
     use WithFileUploads;
@@ -33,6 +33,10 @@ class Desaparecidos extends Component
         $this->idade = '';
         $this->icon = '';
         $this->descricao = '';
+        $this->estado = '';
+        $this->estados = '';
+        $this->new_icon = '';
+        $this->old_icon = '';
     }
 
     public function store()
@@ -61,10 +65,13 @@ class Desaparecidos extends Component
     {
         $post = Desaparecido::findOrFail($id);
         $this->desaparecido_id = $id;
+        $this->fase_id = $post->fase_id;
         $this->esquadra_id = $post->esquadra_id;
         $this->nome = $post->nome;
         $this->idade = $post->idade;
+        $this->descricao = $post->descricao;
         $this->estado = $post->estado;
+        $this->old_icon = $post->icon;
         $this->updateMode = true;
     }
 
@@ -84,18 +91,30 @@ class Desaparecidos extends Component
             'descricao' => 'required',
         ]);
   
+        $input = $validatedDate;
         $post = Desaparecido::find($this->desaparecido_id);
-        $post->update([
-            'nome' => $this->nome,
-            'fase_id' => $this->fase_id,
-            'esquadra_id' => $this->esquadra_id,
-            'idade' => $this->idade,
-            'descricao' => $this->descricao
-        ]);
+        if ($post->estado === $this->estado) {
+            $input['estado'] = $post->estado;
+        } else {
+            $input['estado'] = $this->estado;
+        }
+        
+        $destination =  public_path('storage\\'. $post->icon);
+        if (isset($this->new_icon)) {
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $input['icon'] = $this->new_icon->store('files', 'public');
+        } else {
+            $input['icon'] = $this->old_icon;
+        }
+
+        $post->update($input);
   
         $this->updateMode = false;
   
-        session()->flash('message', 'Esuadra actualizada.');
+        session()->flash('message', 'Desaparecido actualizado.');
         $this->resetInputFields();
     }
 

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Gestão de Esquadras</title>
-    <link rel="icon" href="{{ asset('assets/images/avatar/nacional.png') }}"> 
+    <link rel="icon" href="{{ asset('assets/images/avatar/nacional.png') }}">
 
     <!-- Prevent the demo from appearing in search engines -->
     <meta name="robots" content="noindex">
@@ -33,14 +33,19 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
+    </script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133433427-1"></script> -->
-    <script>
+    {{-- <script>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -48,7 +53,7 @@
         }
         gtag('js', new Date());
         gtag('config', 'UA-133433427-1');
-    </script>
+    </script> --}}
 
     @livewireStyles
 
@@ -78,7 +83,7 @@
 
                         <!-- Navbar Brand -->
                         <a href="{{ Route('/') }}">
-                            <img src="{{ asset('assets/images/avatar/nacional.png') }}" alt="Foto"
+                            <img src="{{ asset('assets/images/avatar/nacional.png') }}" alt="Simbolo"
                                 class="avatar-img rounded-circle" style="width: 40px; height: 40px;">
                             <span>Ministério do Interior</span>
                         </a>
@@ -100,9 +105,9 @@
                                         <span class="flex navbar-notifications-menu__title m-0">Notificação</span>
                                         <a href="javascript:void(0)" class="text-muted"><small>Apagar Tudo</small></a>
                                     </div>
-                                    <!-- <div class="navbar-notifications-menu__content" data-perfect-scrollbar>
+                                    <div class="navbar-notifications-menu__content" data-perfect-scrollbar>
                                         <div class="py-2">
-
+                                            {{-- @foreach ($desaparecido as $d)
                                             <div class="dropdown-item d-flex">
                                                 <div class="mr-3">
                                                     <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
@@ -110,118 +115,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex">
-                                                    <a href="#">A.Demian</a> left a comment on <a href="#">FlowDash</a><br>
+                                                    <a href="#">{{$d->nome}}</a> left a comment on<br>
                                                     <small class="text-muted">1 minute ago</small>
                                                 </div>
                                             </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    New user <a href="#">Peter Parker</a> signed up.<br>
-                                                    <small class="text-muted">1 hour ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title rounded-circle">JD</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                    <div>Hey, how are you? What about our next meeting</div>
-                                                    <small class="text-muted">2 minutes ago</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                        <img src="{{ asset('assets/images/256_daniel-gaffey-1060698-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
-                                                    </div>
-                                                </div>
-                                                <div class="flex">
-                                                    <a href="#">A.Demian</a> left a comment on <a href="#">FlowDash</a><br>
-                                                    <small class="text-muted">1 minute ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    New user <a href="#">Peter Parker</a> signed up.<br>
-                                                    <small class="text-muted">1 hour ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title rounded-circle">JD</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                    <div>Hey, how are you? What about our next meeting</div>
-                                                    <small class="text-muted">2 minutes ago</small>
-                                                </div>
-                                            </div>
-
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <div class="avatar avatar-sm" style="width: 32px; height: 32px;">
-                                                        <img src="{{ asset('assets/images/256_daniel-gaffey-1060698-unsplash.jpg') }}" alt="Avatar" class="avatar-img rounded-circle">
-                                                    </div>
-                                                </div>
-                                                <div class="flex">
-                                                    <a href="#">A.Demian</a> left a comment on <a href="#">FlowDash</a><br>
-                                                    <small class="text-muted">1 minute ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title bg-purple rounded-circle"><i class="material-icons icon-16pt">person_add</i></span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    New user <a href="#">Peter Parker</a> signed up.<br>
-                                                    <small class="text-muted">1 hour ago</small>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-item d-flex">
-                                                <div class="mr-3">
-                                                    <a href="#">
-                                                        <div class="avatar avatar-xs" style="width: 32px; height: 32px;">
-                                                            <span class="avatar-title rounded-circle">JD</span>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="flex">
-                                                    <a href="#">Big Joe</a> <small class="text-muted">wrote:</small><br>
-                                                    <div>Hey, how are you? What about our next meeting</div>
-                                                    <small class="text-muted">2 minutes ago</small>
-                                                </div>
-                                            </div>
-
+                                            @endforeach --}}
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <a href="javascript:void(0);"
                                         class="dropdown-item text-center navbar-notifications-menu__footer">Ver
                                         Tudo</a>
@@ -230,41 +130,52 @@
                         </ul>
 
                         <ul class="nav navbar-nav d-none d-sm-flex border-left navbar-height align-items-center">
-                            <li class="nav-item dropdown">
-                                <a href="#account_menu" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                                    data-caret="false">
-                                    <span class="mr-1 d-flex-inline">
-                                        <span class="text-light">{{ Auth::user()->name }}</span>
-                                    </span>
-                                    <img src="{{ asset('assets/images/avatar/256_luke-porter-261779-unsplash.jpg') }}"
-                                        class="rounded-circle" width="32" alt="Frontted">
-                                </a>
-                                <div id="account_menu" class="dropdown-menu dropdown-menu-right">
-                                    <div class="dropdown-item-text dropdown-item-text--lh">
-                                        <div><strong>{{ Auth::user()->name }}</strong></div>
-                                        <div class="text-muted">{{ Auth::user()->email }}</div>
-                                    </div>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ Route('/')}}"><i class="material-icons">dvr</i>
-                                        Início</a>
-                                    <a class="dropdown-item" href="#"><i
-                                            class="material-icons">account_circle</i> Meu Perfil</a>
-                                    <a class="dropdown-item" href="#"><i class="material-icons">edit</i>
-                                        Alterar</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"><i class="material-icons">exit_to_app</i>
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <a href="route('logout')"
-                                                onclick="event.preventDefault();
+                            @if (Route::has('login'))
+                                @auth
+                                    <li class="nav-item dropdown">
+                                        <a href="#account_menu" class="nav-link dropdown-toggle" data-toggle="dropdown"
+                                            data-caret="false">
+                                            <span class="mr-1 d-flex-inline">
+                                                <span class="text-light">{{ Auth::user()->name }}</span>
+                                            </span>
+                                            <img src="{{ asset('assets/images/avatar/256_luke-porter-261779-unsplash.jpg') }}"
+                                                class="rounded-circle" width="32" alt="Frontted">
+                                        </a>
+                                        <div id="account_menu" class="dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-item-text dropdown-item-text--lh">
+                                                <div><strong>{{ Auth::user()->name }}</strong></div>
+                                                <div class="text-muted">{{ Auth::user()->email }}</div>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ Route('/') }}"><i
+                                                    class="material-icons">dvr</i>
+                                                Início</a>
+                                            <a class="dropdown-item" href="#"><i
+                                                    class="material-icons">account_circle</i> Meu Perfil</a>
+                                            <a class="dropdown-item" href="#"><i class="material-icons">edit</i>
+                                                Alterar</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item"><i class="material-icons">exit_to_app</i>
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <a href="route('logout')"
+                                                        onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                                <i class="ion-android-lock" style="padding: 10px;"></i>
-                                                {{ __('Sair') }}
+                                                        <i class="ion-android-lock" style="padding: 10px;"></i>
+                                                        {{ __('Sair') }}
+                                                    </a>
+                                                </form>
                                             </a>
-                                        </form>
-                                    </a>
-                                </div>
-                            </li>
+                                        </div>
+                                    </li>
+                                @endauth
+                            @else
+                                @guest
+                                    <div>Entrar</div>
+                                    <a class="dropdown-item" href="{{ route('login') }}"
+                                        class="text-sm text-gray-700 underline">Entrar</a>
+                                @endguest
+                            @endif
                         </ul>
 
                     </div>
@@ -281,9 +192,9 @@
             <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
                 <div class="mdk-drawer-layout__content page">
 
-            {{ $slot }}
+                    {{ $slot }}
 
-                    
+
                 </div>
                 <!-- // END drawer-layout__content -->
 
@@ -294,23 +205,24 @@
                             <ul class="sidebar-menu">
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#dashboards_menu">
-                                        <i class="sidebar-menu-icon sidebar-menu-icon--left material-icons">dvr</i>
+                                        <img src="{{ asset('assets/images/logos/9.png') }}" alt="Simbolo"
+                                            class="avatar-img rounded-circle" style="width: 25px; margin-right: 10px">
                                         <span class="sidebar-menu-text">Gerir Credenciais</span>
                                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="dashboards_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('role')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('role') }}">
                                                 <span class="sidebar-menu-text">Role</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('rota')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('rota') }}">
                                                 <span class="sidebar-menu-text">Rota</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('permissao')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('permissao') }}">
                                                 <span class="sidebar-menu-text">Permissão</span>
                                             </a>
                                         </li>
@@ -319,47 +231,21 @@
 
                                 <li class="sidebar-menu-item">
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#apps_menu">
-                                        <i
-                                            class="sidebar-menu-icon sidebar-menu-icon--left material-icons">slideshow</i>
+                                        <img src="{{ asset('assets/images/logos/2.png') }}" alt="Simbolo"
+                                            class="avatar-img rounded-circle" style="width: 25px; margin-right: 10px">
                                         <span class="sidebar-menu-text">Gerir Indiciados</span>
                                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="apps_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('indiciado')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('indiciado') }}">
                                                 <span class="sidebar-menu-text">Indiciado</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('esquadra')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('esquadra') }}">
                                                 <span class="sidebar-menu-text">Listar Esquadras</span>
                                             </a>
-                                        </li>
-                                        <li class="sidebar-menu-item ">
-                                            <a class="sidebar-menu-button" data-toggle="collapse"
-                                                href="#course_menu">
-                                                <span class="sidebar-menu-text">Indiciados Existentes</span>
-                                                <span class="ml-auto d-flex align-items-center">
-                                                    <span class="sidebar-menu-toggle-icon"></span>
-                                                </span>
-                                            </a>
-                                            <ul class="sidebar-submenu collapse " id="course_menu">
-                                                <li class="sidebar-menu-item ">
-                                                    <a class="sidebar-menu-button" href="{{ Route('indiciadoitem')}}">
-                                                        <span class="sidebar-menu-text">Lista</span>
-                                                    </a>
-                                                </li>
-                                                <li class="sidebar-menu-item ">
-                                                    <a class="sidebar-menu-button" href="app-course.html">
-                                                        <span class="sidebar-menu-text">Course</span>
-                                                    </a>
-                                                </li>
-                                                <li class="sidebar-menu-item ">
-                                                    <a class="sidebar-menu-button" href="app-lesson.html">
-                                                        <span class="sidebar-menu-text">Lesson</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
                                         </li>
                                     </ul>
                                 </li>
@@ -433,20 +319,15 @@
 
                                 <li class="sidebar-menu-item active open">
                                     <a class="sidebar-menu-button" data-toggle="collapse" href="#pages_menu">
-                                        <i
-                                            class="sidebar-menu-icon sidebar-menu-icon--left material-icons">description</i>
+                                        <img src="{{ asset('assets/images/logos/icons.png') }}" alt="Simbolo"
+                                            class="avatar-img rounded-circle" style="width: 25px; margin-right: 10px">
                                         <span class="sidebar-menu-text">Desaparecidos</span>
                                         <span class="ml-auto sidebar-menu-toggle-icon"></span>
                                     </a>
                                     <ul class="sidebar-submenu collapse show " id="pages_menu">
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('desaparecido')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('desaparecido') }}">
                                                 <span class="sidebar-menu-text">Desaparecidos</span>
-                                            </a>
-                                        </li>
-                                        <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="stories.html">
-                                                <span class="sidebar-menu-text">Stories</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -461,30 +342,35 @@
                                     </a>
                                     <ul class="sidebar-submenu collapse" id="layouts_menu">
                                         <li class="sidebar-menu-item active">
-                                            <a class="sidebar-menu-button" href="{{ Route('provincia')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('provincia') }}">
                                                 <span class="sidebar-menu-text">Província</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="{{ Route('distrito')}}">
+                                            <a class="sidebar-menu-button" href="{{ Route('distrito') }}">
                                                 <span class="sidebar-menu-text">Distritos</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="fixed-blank.html">
+                                            <a class="sidebar-menu-button" href="{{ Route('crime') }}">
                                                 <span class="sidebar-menu-text">Crime</span>
                                             </a>
                                         </li>
                                         <li class="sidebar-menu-item">
-                                            <a class="sidebar-menu-button" href="mini-blank.html">
+                                            <a class="sidebar-menu-button" href="{{ Route('fase') }}">
                                                 <span class="sidebar-menu-text">Fases</span>
+                                            </a>
+                                        </li>
+                                        <li class="sidebar-menu-item">
+                                            <a class="sidebar-menu-button" href="{{ Route('entidade') }}">
+                                                <span class="sidebar-menu-text">Entidade</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
-                                
+
                             </ul>
-                           {{--  <div class="sidebar-heading">Components</div>
+                            {{--  <div class="sidebar-heading">Components</div>
                             <div class="sidebar-block p-0 mb-0">
                                 <ul class="sidebar-menu" id="components_menu">
                                     <li class="sidebar-menu-item">
@@ -606,42 +492,24 @@
                                     </div>
                                 </div>
                             </div> --}}
+                            @Auth
+                                <div class="sidebar-p-a">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a href="route('logout')"
+                                            onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                                                                               <button class="btn btn-primary btn-block">Sair</button>
 
-                            <div class="d-flex align-items-center sidebar-p-a border-bottom sidebar-account">
-                                <a href="profile.html"
-                                    class="flex d-flex align-items-center text-underline-0 text-body">
-                                    <span class="avatar avatar-sm mr-2">
-                                        <img src="assets/images/avatar/demi.png" alt="avatar"
-                                            class="avatar-img rounded-circle">
-                                    </span>
-                                    <span class="flex d-flex flex-column">
-                                        <strong>{{ Auth::user()->name }}</strong>
-                                        <small class="text-muted text-uppercase">Site Manager</small>
-                                    </span>
-                                </a>
-                                <div class="dropdown ml-auto">
-                                    <a href="#" data-toggle="dropdown" data-caret="false"
-                                        class="text-muted"><i class="material-icons">more_vert</i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-item-text dropdown-item-text--lh">
-                                            <div><strong>{{ Auth::user()->name }}</strong></div>
-                                            <div>{{ Auth::user()->email }}</div>
-                                        </div>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="index.html">Dashboard</a>
-                                        <a class="dropdown-item" href="profile.html">My profile</a>
-                                        <a class="dropdown-item" href="edit-account.html">Edit account</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="login.html">Logout</a>
-                                    </div>
+                                        </a>
+                                    </form>
                                 </div>
-                            </div>
-
-                            <div class="sidebar-p-a">
-                                <a href="https://themeforest.net/item/stack-admin-bootstrap-4-dashboard-template/22959011"
-                                    class="btn btn-primary btn-block">Purchase &dollar;35</a>
-                            </div>
-
+                            @endauth
+                            @guest
+                                <div class="sidebar-p-a">
+                                    <a href="{{ Route('login') }}" class="btn btn-primary btn-block">Entrar</a>
+                                </div>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -1093,32 +961,33 @@
     <script src="{{ asset('assets/js/list.js') }}"></script>
 
     <script>
-  
-        window.addEventListener('swal:modal', event => { 
+        window.addEventListener('swal:modal', event => {
             swal({
-              title: event.detail.message,
-              text: event.detail.text,
-              icon: event.detail.type,
+                title: event.detail.message,
+                text: event.detail.text,
+                icon: event.detail.type,
             });
         });
-          
-        window.addEventListener('swal:confirm', event => { 
+
+        window.addEventListener('swal:confirm', event => {
             swal({
-              title: event.detail.message,
-              text: event.detail.text,
-              icon: event.detail.type,
-              buttons: true,
-              dangerMode: true,
-            })
-            .then((willDelete) => {
-              if (willDelete) {
-                window.livewire.emit('remove');
-              }
-            });
+                    title: event.detail.message,
+                    text: event.detail.text,
+                    icon: event.detail.type,
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.livewire.emit('remove');
+                    }
+                });
         });
-         </script>
+    </script>
 
     @livewireScripts
+    @include('livewire.modal')
+
 </body>
 
 

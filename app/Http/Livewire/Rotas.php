@@ -73,7 +73,7 @@ class Rotas extends Component
     public function delete($id)
     {
         Rota::find($id)->delete();
-        session()->flash('message', 'Rota deletada com sucesso.');
+        $this->remove();
     }
 
     public function alertSuccess()

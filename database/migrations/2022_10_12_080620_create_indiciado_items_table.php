@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreign('esquadra_id')->references('id')->on('esquadra')->onDelete('cascade')->onUpdate('cascade');
             $table->longText('descricao')->nullable();
             $table->string('anexo')->nullable();
+            $table->string('processo')->nullable();
             $table->string('estado')->default('on');
             $table->timestamps();
         });

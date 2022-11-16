@@ -53,7 +53,8 @@
                                         <th style="width: 120px;">Fase</th>
                                         <th style="width: 120px;">Idade</th>
                                         <th style="width: 120px;">Icon</th>
-                                        <th style="width: 120px;">Acções</th>
+                                        <th style="width: 120px;">Estado</th>
+                                        <th style="width: 160px;">Acções</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list" id="staff02">
@@ -70,6 +71,12 @@
                                             </td>
                                             <td><img src="{{ asset('storage') }}/{{ $p->icon }}"
                                                     style="width: 70px; height: 70px;"></td>
+                                            <td>{{-- <div class="custom-control custom-switch">
+                                                <input type="checkbox" wire:model="estado" wire:click="switch('{{ $p->id }}')" class="custom-control-input" id="{{ $p->nome }}">
+                                                <label class="custom-control-label" for="{{ $p->nome }}"></label>
+                                              </div></span> --}}
+                                              @if($p->estado === 'true') <p style="color: blue"> Encontrado </p> @else <p style="color: red">Desaparecido</p>  @endif
+                                            </td>
                                             <td>
                                                 <button wire:click.prevent="edit('{{ $p->id }}')"
                                                     class="btn btn-primary btn-sm">Alterar</button>
@@ -83,7 +90,7 @@
                                 </tbody>
                             </table>
 
-                            
+
                         </div>
 
                     </div>

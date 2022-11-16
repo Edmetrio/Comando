@@ -141,9 +141,9 @@
                                                         class="js-lists-values-employee-name">{{ $p->endereco }}</span>
                                                 </td>
                                                 @if ($p->estado === 'true')
-                                                    <td><span class="js-lists-values-employee-name">True</span></td>
+                                                    <td><span class="badge badge-primary">CONTÉM</span></td>
                                                 @elseif($p->estado === 'false')
-                                                    <td><span class="js-lists-values-employee-name">False</span></td>
+                                                    <td><span class="badge badge-warning">NÃO CONTÉM</span></td>
                                                 @endif
                                                 <td>
                                                     {{-- <button class="btn btn-info"><a

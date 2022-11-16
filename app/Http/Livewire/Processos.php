@@ -12,10 +12,11 @@ use Livewire\WithFileUploads;
 
 class Processos extends Component
 {
-    public $users_id, $indiciado_id, $crime_id, $descricao, $esquadra_id, $anexo, $processo_id;
+    public $users_id, $indiciado_id, $crime_id, $descricao, $esquadra_id, $anexo, $processo_id, $anexos, $icon;
     public $updateMode = false;
     use WithFileUploads;
     public $search = '';
+    public $message, $text;
 
     public function mount($id)
     {
@@ -44,6 +45,8 @@ class Processos extends Component
         $this->crime_id = '';
         $this->descricao = '';
         $this->anexo = '';
+        $this->message = '';
+        $this->text = '';
     }
 
     public function store()
@@ -53,18 +56,62 @@ class Processos extends Component
             'crime_id' => 'required',
             'esquadra_id' => 'required',
             'descricao' => 'required',
-            /* 'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', */
+            /* 'anexo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', */
         ]);
         $input = $validatedDate;
         $input['users_id'] = Auth::user()->id;
         $input['indiciado_id'] = $this->indiciado_id;
-        /* $input['anexo'] = $this->anexo->store('files', 'public'); */
+        if (isset($this->anexo)) {
+            $input['anexo'] = $this->anexo->store('files', 'public');
+            $this->anexos = $this->anexo->store('files', 'public');
+        } else {
+            $input['anexo'] = '';
+            $this->anexos = '';
+        }
+        
 
-        IndiciadoItem::create($input);
-  
-        session()->flash('message', 'Item criada com sucesso.');
+        IndiciadoItem::create([
+            'users_id' => Auth::user()->id,
+            'indiciado_id' => $this->indiciado_id,
+            'crime_id' => $this->crime_id,
+            'esquadra_id' => $this->esquadra_id,
+            'descricao' => $this->descricao,
+            'anexo' => $this->anexos,
+        ]);
+        $this->message = 'Item do indiciado criado com sucesso.';
+        $this->text = 'Por favor, verifica o indiciado adicionado.';
+        $this->alertSuccess();
   
         $this->resetInputFields();
+    }
+
+    public function storeA()
+    {
+        dd('Ver');
+        $validatedDate = $this->validate([
+            /* 'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', */
+            'icon' => 'required'
+        ]);
+        /* $input = $validatedDate;
+        if ($this->icon) {
+            $input['icon'] = $this->icon->store('files', 'public');
+        } else {
+            $input['icon'] = '';
+        } */
+        dd($validatedDate);
+  
+        session()->flash('message', 'Slider criado com sucesso.');
+  
+        $this->resetInputFields();
+    }
+
+    public function alertSuccess()
+    {
+        $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',  
+                'message' => $this->message, 
+                'text' => $this->text
+            ]);
     }
 
     /* public function edit($id)

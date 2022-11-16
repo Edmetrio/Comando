@@ -10,6 +10,7 @@ class Listadesaparecidos extends Component
 {
     public $search = '';
     public $selectedDesaparecido = NULL;
+    public $selectedEstado = NULL, $ModeEstado = false, $estados;
 
     public function render()
     {
@@ -22,7 +23,17 @@ class Listadesaparecidos extends Component
     public function updatedSelectedDesaparecido($desaparecido_id)
     {
         if (!is_null($desaparecido_id)) {
+            $this->ModeEstado = false;
             $this->desaparecido = Desaparecido::with('fases','esquadras')->where('fase_id', $desaparecido_id)->get();
+        }
+    }
+
+    public function updatedSelectedEstado($estado)
+    {
+        if (!is_null($estado)) {
+            $this->ModeEstado = true;
+
+            $this->estados = Desaparecido::with('fases','esquadras')->where('estado', $estado)->get();
         }
     }
 }

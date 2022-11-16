@@ -62,7 +62,6 @@
                     @enderror
                 </div>
             </div>
-
             <button wire:click.prevent="store()" class="btn btn-success">Adicionar</button>
         </form>
     </div>

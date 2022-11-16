@@ -8,7 +8,7 @@
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a>
                             </li>
-                            <li class="breadcrumb-item">UI Província</li>
+                            <li class="breadcrumb-item">UI Esquadra</li>
                             <li class="breadcrumb-item active">Lista</li>
                         </ol>
                     </nav>
@@ -49,8 +49,8 @@
                                 <thead>
                                     <tr>
 
-                                        <th style="width: 120px;">Distrito</th>
                                         <th style="width: 120px;">Nome</th>
+                                        <th style="width: 120px;">Distrito</th>
                                         <th style="width: 120px;">Endereço</th>
                                         <th style="width: 120px;">Contacto</th>
                                         <th style="width: 10px;">Acções</th>
@@ -60,9 +60,9 @@
                                     @foreach ($esquadra as $p)
                                         <tr>
                                             <td><span
-                                                    class="js-lists-values-employee-name">{{ $p->distritos->nome }}</span>
+                                                    class="js-lists-values-employee-name">{{ $p->nome }}</span>
                                             </td>
-                                            <td><span class="js-lists-values-employee-name">{{ $p->nome }}</span>
+                                            <td><span class="js-lists-values-employee-name">{{ $p->distritos->nome }}</span>
                                             </td>
                                             <td><span class="js-lists-values-employee-name">{{ $p->endereco }}</span>
                                             </td>

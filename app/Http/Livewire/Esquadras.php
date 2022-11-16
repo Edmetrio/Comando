@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Models\Distrito;
+use App\Models\Models\Entidade;
 use App\Models\Models\Esquadra;
 use Livewire\Component;
 
@@ -36,10 +37,14 @@ class Esquadras extends Component
             'contacto' => 'required',
         ]);
         
-        Esquadra::create($validatedDate);
-  
-        session()->flash('message', 'Esquadra criada com sucesso.');
-  
+        $esquadra = Esquadra::where('nome', $this->nome)->first();
+        if (isset($esquadra)) {
+            $this->error();
+        } else {
+            Esquadra::create($validatedDate);
+            Entidade::create($validatedDate); 
+            $this->alertSuccess();
+        } 
         $this->resetInputFields();
     }
 
@@ -77,16 +82,53 @@ class Esquadras extends Component
             'endereco' => $this->endereco,
             'contacto' => $this->contacto
         ]);
-  
+
         $this->updateMode = false;
   
-        session()->flash('message', 'Esuadra actualizada.');
+        $this->alertUpdate();
         $this->resetInputFields();
     }
 
     public function delete($id)
     {
         Esquadra::find($id)->delete();
-        session()->flash('message', 'Esquadra deletada com sucesso.');
+        $this->remove();
     }
+
+    public function alertSuccess()
+    {
+        $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',  
+                'message' => 'Esquadra criada com sucesso.', 
+                'text' => 'Por favor, verifica o esquadra adicionado.'
+            ]);
+    }
+
+    public function alertUpdate()
+    {
+        $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',  
+                'message' => 'Esquadra actualizada com sucesso.', 
+                'text' => 'Por favor, verifica a esquadra actualizada.'
+            ]);
+    }
+
+    public function error()
+    {
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'error',
+            'message' => 'Esquadra Inexistente!',
+            'text' => 'Por favor, Introduz outra Esquadra.'
+        ]);
+    }
+
+    public function remove()
+    {
+        /* Write Delete Logic */
+        $this->dispatchBrowserEvent('swal:modal', [
+            'type' => 'success',
+            'message' => 'Esquadra deletada!',
+            'text' => 'A Esquadra não faz mais parte da lista.'
+        ]);
+    } 
 }
